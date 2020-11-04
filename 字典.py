@@ -1,3 +1,5 @@
+import pandas
+
 xiaoming_dict = {"name": "小明",
                  "age": 18,
                  "gender": True}
@@ -25,6 +27,7 @@ xiaoming_dict.clear()
 # 如果字典中没有key,就会添加该键值对,如果已经有key了,就会覆盖对应的value值
 xiaoming_dict["class"] = 1
 xiaoming_dict["class"] = 2
+
 
 # 4. 添加新的键值对(方法二)
 # xiaoming_dict.fromkeys("scores", 100)
