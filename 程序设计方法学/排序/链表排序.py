@@ -57,9 +57,26 @@ class SingleLinkedList:
 
     # 链表排序
     def select_sort(self):
-        tail = None
-        travel_p = self.head
-        small_p = None
+        tail = None  # 排序部分的最后一个结点
+        travel_p = self.head  # 尚未排序的第一个节点
+        small_p = None # 最小结点
+        pre_small = None # 最小结点的上一个结点
+        while travel_p is not None:
+            small_p = travel_p
+            pre_small = self.getPreSmall()
+            # 因为 small_p 有可能是头结点, 所以 pre_small 有可能为空
+            if pre_small is not None:
+                small_p = pre_small.next
+                pre_small.next = small_p.next
+            else:
+                head = small_p
+            if tail is None:
+                head = small_p
+            else:
+                tail.next = small_p
+            tail = small_p
+        return head
+
 
 
 
@@ -75,4 +92,9 @@ if __name__ == '__main__':
     my_link.add_list(node3)
     my_link.add_list(node4)
     my_link.travel_list()
+    head = my_link.select_sort()
+    print("------")
+    my_link01 = SingleLinkedList()
+    my_link01.add_list(head)
+    my_link01.travel_list()
 
